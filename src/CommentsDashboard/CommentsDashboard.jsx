@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {UserButton} from "../UserButton/UserButton.jsx";
 
 function useFetchedUsers() {
   const [users, setUsers] = useState([]);
@@ -24,6 +25,10 @@ function useFetchedUsers() {
   };
 }
 
+const handleClick = () => {
+  console.log('button clicked')
+}
+
 const UsersButtons = () => {
   const { isLoading, users } = useFetchedUsers();
 
@@ -33,7 +38,7 @@ const UsersButtons = () => {
       {!isLoading && (
         <div>
           {users.map((user) => (
-            <button key={user.id}>{user.name}</button>
+            <UserButton key={user.id} userName={user.name} onClick={handleClick} />
           ))}
         </div>
       )}
