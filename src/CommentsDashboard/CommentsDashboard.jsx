@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import {UserButton} from "../UserButton/UserButton.jsx";
+import { UserButton } from '../UserButton/UserButton.jsx';
+import { PostsList } from '../PostsList/PostList.jsx';
 
 function useFetchedUsers() {
   const [users, setUsers] = useState([]);
@@ -25,12 +26,13 @@ function useFetchedUsers() {
   };
 }
 
-const handleClick = () => {
-  console.log('button clicked')
-}
-
-const UsersButtons = () => {
+export const CommentsDashboard = () => {
   const { isLoading, users } = useFetchedUsers();
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleClick = (userId) => {
+    setCurrentUser(userId);
+  };
 
   return (
     <div>
@@ -38,14 +40,15 @@ const UsersButtons = () => {
       {!isLoading && (
         <div>
           {users.map((user) => (
-            <UserButton key={user.id} userName={user.name} onClick={handleClick} />
+            <UserButton
+              key={user.id}
+              userName={user.name}
+              onClick={() => handleClick(user.id)}
+            />
           ))}
         </div>
       )}
+      {currentUser && <PostsList userId={currentUser} />}
     </div>
   );
-};
-
-export const CommentsDashboard = () => {
-  return <UsersButtons />;
 };
