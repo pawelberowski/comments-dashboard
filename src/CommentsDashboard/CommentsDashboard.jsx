@@ -43,7 +43,9 @@ export const CommentsDashboard = () => {
           {users.map((user) => (
             <UserButton
               key={user.id}
+              userId={user.id}
               userName={user.name}
+              isSelected={currentUser === user.id}
               onClick={() => handleClick(user.id)}
             />
           ))}
