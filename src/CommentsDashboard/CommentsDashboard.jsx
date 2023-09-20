@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { UserButton } from '../UserButton/UserButton.jsx';
 import { PostsList } from '../PostsList/PostList.jsx';
+import Stack from '@mui/material/Stack';
 
 function useFetchedUsers() {
   const [users, setUsers] = useState([]);
@@ -38,7 +39,7 @@ export const CommentsDashboard = () => {
     <div>
       {isLoading && <p>Loading users...</p>}
       {!isLoading && (
-        <div>
+        <Stack direction="row" spacing={2}>
           {users.map((user) => (
             <UserButton
               key={user.id}
@@ -46,7 +47,7 @@ export const CommentsDashboard = () => {
               onClick={() => handleClick(user.id)}
             />
           ))}
-        </div>
+        </Stack>
       )}
       {currentUser && <PostsList userId={currentUser} />}
     </div>

@@ -1,3 +1,8 @@
+import Button from '@mui/material/Button';
 export const UserButton = ({ userName, onClick }) => {
-  return <button onClick={onClick}>{userName}</button>;
+  return (
+    <Button variant={'outlined'} onClick={onClick}>
+      {userName}
+    </Button>
+  );
 };
