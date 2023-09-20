@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PostTile } from './PostTile/PostTile.jsx';
+import { List, ListItem } from '@mui/material';
 
 function useFetchedPosts(userId) {
   const [posts, setPosts] = useState([]);
@@ -32,11 +33,11 @@ export const PostsList = ({ userId }) => {
     <div>
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
-        <div>
+        <List>
           {posts.map((post) => (
             <PostTile key={post.id} title={post.title} body={post.body} />
           ))}
-        </div>
+        </List>
       )}
     </div>
   );
