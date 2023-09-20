@@ -1,30 +1,6 @@
-import { useEffect, useState } from 'react';
 import { PostTile } from './PostTile/PostTile.jsx';
-import { List, ListItem } from '@mui/material';
-
-function useFetchedPosts(userId) {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data', error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [userId]);
-
-  return {
-    posts,
-    isLoading,
-  };
-}
+import { List } from '@mui/material';
+import { useFetchedPosts } from './useFetchedPosts';
 
 export const PostsList = ({ userId }) => {
   const { isLoading, posts } = useFetchedPosts(userId);
