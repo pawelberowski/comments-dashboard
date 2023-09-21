@@ -9,5 +9,5 @@ export const DataLists = ({ currentUser, displayedList }) => {
   if (displayedList === postsList) {
     return <PostsList userId={currentUser} />;
   }
-  return <PhotosList />;
+  return <PhotosList userId={currentUser} />;
 };
