@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { UserButton } from '../UserButton/UserButton.jsx';
-import { PostsList } from '../PostsList/PostList.jsx';
 import Stack from '@mui/material/Stack';
 import { SelectDisplayedListButtons } from '../SelectDisplayedListButtons/SelectDisplayedListButtons.jsx';
 import { useFetchedUsers } from './useFetchedUsers.jsx';
