@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { UserButton } from '../UserButton/UserButton.jsx';
+import { UserButton } from './UserButton/UserButton.jsx';
 import Stack from '@mui/material/Stack';
-import { SelectDisplayedListButtons } from '../SelectDisplayedListButtons/SelectDisplayedListButtons.jsx';
+import { SelectDisplayedListButtons } from './SelectDisplayedListButtons/SelectDisplayedListButtons.jsx';
 import { useFetchedUsers } from './useFetchedUsers.jsx';
 import { useDisplayedList } from './useDisplayedList.jsx';
-import { DataLists } from './DataLists.jsx';
+import { DataLists } from './DataLists/DataLists.jsx';
 
 export const CommentsDashboard = () => {
   const { isLoading, users } = useFetchedUsers();

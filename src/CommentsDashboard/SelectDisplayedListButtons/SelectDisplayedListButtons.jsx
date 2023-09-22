@@ -1,9 +1,6 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import {
-  photosList,
-  postsList,
-} from '../CommentsDashboard/useDisplayedList.jsx';
+import { photosList, postsList } from '../useDisplayedList.jsx';
 
 export const SelectDisplayedListButtons = ({
   displayedList,

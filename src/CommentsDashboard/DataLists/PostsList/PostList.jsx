@@ -1,6 +1,6 @@
 import { PostTile } from './PostTile/PostTile.jsx';
 import { List } from '@mui/material';
-import { useFetchedPosts } from './useFetchedPosts';
+import { useFetchedPosts } from './useFetchedPosts.jsx';
 
 export const PostsList = ({ userId }) => {
   const { isLoading, posts } = useFetchedPosts(userId);
