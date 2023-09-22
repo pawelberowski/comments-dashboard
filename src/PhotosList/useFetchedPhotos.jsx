@@ -1,8 +1,24 @@
 import { useEffect, useState } from 'react';
 
-export function useFetchedPhotos(albums) {
+export function useFetchedPhotos(userId) {
+  const [albums, setAlbums] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAlbums(data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      })
+      .finally(() => {
+        console.log('Albums loaded');
+      });
+  }, [userId]);
+
   const photosPath = () => {
     let path = '';
     albums.forEach((album) => {
