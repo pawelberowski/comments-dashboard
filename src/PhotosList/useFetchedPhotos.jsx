@@ -19,16 +19,16 @@ export function useFetchedPhotos(userId) {
       });
   }, [userId]);
 
-  const photosPath = () => {
-    let path = '';
-    albums.forEach((album) => {
-      path += `albumId=${album.id},`;
-    });
-    return path.split(',').join('&');
-  };
-
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/photos?${photosPath()}`)
+    const getPhotosPath = () => {
+      const albumsIds = albums.map((album) => {
+        return ['albumId', album.id];
+      });
+      const params = new URLSearchParams(albumsIds);
+      return params.toString();
+    };
+
+    fetch(`https://jsonplaceholder.typicode.com/photos?${getPhotosPath()}`)
       .then((response) => response.json())
       .then((data) => {
         setPhotos(data);
