@@ -6,10 +6,10 @@ export function useFetchedPhotos(albums) {
   const photosPath = () => {
     let path = '';
     albums.forEach((album) => {
-      path += `albumId=${album.id},`
-    })
+      path += `albumId=${album.id},`;
+    });
     return path.split(',').join('&');
-  }
+  };
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/photos?${photosPath()}`)
