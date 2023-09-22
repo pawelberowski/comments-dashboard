@@ -20,15 +20,13 @@ export function useFetchedPhotos(userId) {
   }, [userId]);
 
   useEffect(() => {
-    const getPhotosPath = () => {
-      const albumsIds = albums.map((album) => {
-        return ['albumId', album.id];
-      });
-      const params = new URLSearchParams(albumsIds);
-      return params.toString();
-    };
+    const albumsIds = albums.map((album) => {
+      return ['albumId', album.id];
+    });
+    const params = new URLSearchParams(albumsIds);
+    const photosPath = params.toString();
 
-    fetch(`https://jsonplaceholder.typicode.com/photos?${getPhotosPath()}`)
+    fetch(`https://jsonplaceholder.typicode.com/photos?${photosPath}`)
       .then((response) => response.json())
       .then((data) => {
         setPhotos(data);
